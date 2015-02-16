@@ -14,6 +14,7 @@
 		C41E32BC1A8EAE75004F55FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41E32BB1A8EAE75004F55FD /* Images.xcassets */; };
 		C41E32BF1A8EAE75004F55FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41E32BD1A8EAE75004F55FD /* LaunchScreen.xib */; };
 		C41E32CB1A8EAE75004F55FD /* StepperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E32CA1A8EAE75004F55FD /* StepperTests.swift */; };
+		DA3DEB0D1A9012BF009386B4 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA3DEB0C1A9012BF009386B4 /* data.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		C41E32C41A8EAE75004F55FD /* StepperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StepperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41E32C91A8EAE75004F55FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C41E32CA1A8EAE75004F55FD /* StepperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTests.swift; sourceTree = "<group>"; };
+		DA3DEB0C1A9012BF009386B4 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				C41E32B01A8EAE75004F55FD /* Info.plist */,
+				DA3DEB0C1A9012BF009386B4 /* data.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				TargetAttributes = {
 					C41E32AB1A8EAE75004F55FD = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2FB3F6Y92Y;
 					};
 					C41E32C31A8EAE75004F55FD = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -195,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA3DEB0D1A9012BF009386B4 /* data.txt in Resources */,
 				C41E32BA1A8EAE75004F55FD /* Main.storyboard in Resources */,
 				C41E32BF1A8EAE75004F55FD /* LaunchScreen.xib in Resources */,
 				C41E32BC1A8EAE75004F55FD /* Images.xcassets in Resources */,
@@ -340,9 +345,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Stepper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -350,9 +358,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Stepper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -409,6 +420,7 @@
 				C41E32D01A8EAE75004F55FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C41E32D11A8EAE75004F55FD /* Build configuration list for PBXNativeTarget "StepperTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +429,7 @@
 				C41E32D31A8EAE75004F55FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
