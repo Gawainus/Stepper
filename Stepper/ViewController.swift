@@ -19,7 +19,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var stepCounter: UILabel!
     
     @IBAction func doneRecording(sender: AnyObject) {
-
         sendMail(output)
     }
     
@@ -28,11 +27,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     private let bundle = NSBundle.mainBundle()
     
-    let stepThreshold : Float = 0.5
-    let interval : Double = 0.1
+    let stepThreshold : Float = 0.2
+    let interval : Double = 0.01
     private var stepCount : Int = 0
     
     var output : NSString = ""
+    var now : NSDate?
     
     func updateDisplay() {
         let motion = motionManager.deviceMotion
@@ -43,22 +43,25 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
             let userAcc = motion.userAcceleration
             let attitude = motion.attitude
             
+            let gyroscopText = String(format:"Rotation Rate:\nx:%+.2f y: %+.2f z: %+.2f", rotationRate.x, rotationRate.y, rotationRate.z)
+            let acceleratorText = String(format:"Acceleration:\nGravity x: %+.2f User x: %+.2f\nGravity y: %+.2f User y: %+.2f\nGravity z: %+.2f User z: %+.2f", gravity.x, userAcc.x, gravity.y, userAcc.y, gravity.z, userAcc.z)
+            let attitudeText = String(format:"Attitude:\nRoll: %+.2f  Pitch: %+.2f Yaw:%+.2f", attitude.roll, attitude.pitch, attitude.yaw)
+            
+            let timestamp = now!.timeIntervalSinceNow
+            let timestampStr = String("\(-timestamp), ")
+            
+            let content = String(format:"%+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f\n", rotationRate.x, rotationRate.y, rotationRate.z, gravity.x, userAcc.x, gravity.y, userAcc.y, gravity.z, userAcc.z, attitude.roll, attitude.pitch, attitude.yaw)
+            output = output + timestampStr + content
+            
             if( fabsf(Float(userAcc.x)) > stepThreshold || fabsf(Float(userAcc.y)) > stepThreshold || fabsf(Float(userAcc.z)) > stepThreshold ) {
                 stepCount++
             }
-            
-            let gyroscopText = String(format:"Rotation Rate:\nx:%+.2f y: %+.2f z: %+.2f\n", rotationRate.x, rotationRate.y, rotationRate.z)
-            let acceleratorText = String(format:"Acceleration:\nGravity x: %+.2f User x: %+.2f\nGravity y: %+.2f User y: %+.2f\nGravity z: %+.2f User z: %+.2f\n", gravity.x, userAcc.x, gravity.y, userAcc.y, gravity.z, userAcc.z)
-            let attitudeText = String(format:"Attitude:\nRoll: %+.2f  Pitch: %+.2f Yaw:%+.2f\n\n", attitude.roll, attitude.pitch, attitude.yaw)
-            
-            let content = String(gyroscopText + acceleratorText + attitudeText)
-            output = output + content
             
             dispatch_async(dispatch_get_main_queue(), {
                     self.gyroscopeLabel.text = gyroscopText
                     self.accelerometerLabel.text = acceleratorText
                     self.attitudeLabel.text = attitudeText
-                    self.stepCounter.text = String("Steps: \(self.stepCount)")
+                    self.stepCounter.text = String("Steps: \(self.stepCount)\nTime: \(-timestamp)")
             })
 
         }
@@ -90,6 +93,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        now = NSDate()
         if motionManager.deviceMotionAvailable {
             
             motionManager.deviceMotionUpdateInterval = interval
