@@ -27,8 +27,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     private let bundle = NSBundle.mainBundle()
     
-    let stepThreshold : Float = 0.2
+    let stepThreshold : Double = 0.35
     let interval : Double = 0.01
+    let lowest : Double = -0.2
+    
+    var stepFlag = 0
+    
     private var stepCount : Int = 0
     
     var output : NSString = ""
@@ -53,8 +57,13 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
             let content = String(format:"%+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f, %+.2f\n", rotationRate.x, rotationRate.y, rotationRate.z, gravity.x, userAcc.x, gravity.y, userAcc.y, gravity.z, userAcc.z, attitude.roll, attitude.pitch, attitude.yaw)
             output = output + timestampStr + content
             
-            if( fabsf(Float(userAcc.x)) > stepThreshold || fabsf(Float(userAcc.y)) > stepThreshold || fabsf(Float(userAcc.z)) > stepThreshold ) {
+            if (Double(userAcc.z) - lowest) > stepThreshold && stepFlag == 0 {
                 stepCount++
+                stepFlag = 1
+            }
+            
+            if stepFlag == 1 && Double(userAcc.z) < 0 {
+                stepFlag = 0
             }
             
             dispatch_async(dispatch_get_main_queue(), {
