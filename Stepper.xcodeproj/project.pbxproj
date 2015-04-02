@@ -39,6 +39,7 @@
 		C41E32C41A8EAE75004F55FD /* StepperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StepperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41E32C91A8EAE75004F55FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C41E32CA1A8EAE75004F55FD /* StepperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTests.swift; sourceTree = "<group>"; };
+		C4F1435E1AC53CC800908480 /* Stepper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Stepper.entitlements; sourceTree = "<group>"; };
 		DA3DEB0C1A9012BF009386B4 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +82,7 @@
 		C41E32AE1A8EAE75004F55FD /* Stepper */ = {
 			isa = PBXGroup;
 			children = (
+				C4F1435E1AC53CC800908480 /* Stepper.entitlements */,
 				C41E32B11A8EAE75004F55FD /* AppDelegate.swift */,
 				C41E32B61A8EAE75004F55FD /* ViewController.swift */,
 				C41E32B81A8EAE75004F55FD /* Main.storyboard */,
@@ -168,6 +170,11 @@
 					C41E32AB1A8EAE75004F55FD = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 2FB3F6Y92Y;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
 					};
 					C41E32C31A8EAE75004F55FD = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -348,6 +355,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Stepper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -361,6 +369,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Stepper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
